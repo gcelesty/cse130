@@ -7,9 +7,9 @@
 #    on Pennsylvania Avenue by asking a series of questions whether a hotel
 #    can be purchased for Pennsylvania and how much it will cost.
 # 4. What was the hardest part? Be as specific as possible.
-#    
+#    Trying to make sure all the outputs in the assignment have a spot in my code.
 # 5. How long did it take for you to complete the assignment?
-#    2.5 hours
+#    3 hours
 
 import sys;
 
