@@ -98,60 +98,63 @@ def main():
 
                             # if the user answer anything greater than 0, show the user the total amount needed and the total nyumber of houses needed
                             if houses > 0:
-                                print(f"\nYou need ${total_cash_needed} and you have ${cash}. \nNorth Carolina Avenue needs {houses_needed[1]} house(s). \nPacific Avenue needs {houses_needed[2]} house(s).")
+                                print(f"\nYou need ${total_cash_needed} and you have ${cash}. \n       North Carolina Avenue needs {houses_needed[1]} house(s). \n       Pacific Avenue needs {houses_needed[2]} house(s).")
                         
                                 # if both NC and PC need one or more houses, display option A
                                 # out: purchase A
                                 if houses_needed[1] > 0 and houses_needed[2] > 0:
-                                    print(f"\nThis will cost ${total_cash_needed}. \n       Purchase 1 hotel and {total_houses_needed} house(s). \n     Put 1 hotel on Pennsylvania and return and houses to the bank. \n       Put {total_houses_needed} house(s) on North Carolina. \n        Put {total_houses_needed} house(s) on Pacific.")
+                                    print(f"\nThis will cost ${total_cash_needed}. \n       Purchase 1 hotel and {total_houses_needed} house(s). \n       Put 1 hotel on Pennsylvania and return and houses to the bank. \n       Put {houses_needed[1]} house(s) on North Carolina. \n       Put {houses_needed[2]} house(s) on Pacific. \n")
                         
                                 # if both NC and PC is greater than 0 and PA doesnt need any houses, display option B
                                 # out: purchase B
                                 elif houses_needed[1] > 0 and houses_needed[2] == 0:
-                                    print(f"\nThis will cost ${total_cash_needed}. \n       Purchase 1 hotel and {total_houses_needed} house(s). \n     Put 1 hotel on Pennsylvania and return any houses to the bank. \n       Put {total_houses_needed} house(s) on North Carolina.")
+                                    print(f"\nThis will cost ${total_cash_needed}. \n       Purchase 1 hotel and {total_houses_needed} house(s). \n       Put 1 hotel on Pennsylvania and return any houses to the bank. \n       Put {houses_needed[1]} house(s) on North Carolina. \n")
                         
                                 # if both NC and PC is greater than 0 and NC doesnt need any houses, display option C
                                 # out: purchase C
                                 elif houses_needed[1] == 0 and houses_needed[2] > 0:
-                                    print(f"\nThis will cost ${total_cash_needed}. \n       Purchase 1 hotel and {total_houses_needed} house(s). \n     Put 1 hotel on Pennsylvania and return any houses to the bank. \n       Put {total_houses_needed} house(s) on Pacific.")
+                                    print(f"\nThis will cost ${total_cash_needed}. \n       Purchase 1 hotel and {total_houses_needed} house(s). \n       Put 1 hotel on Pennsylvania and return any houses to the bank. \n       Put {houses_needed[2]} house(s) on Pacific. \n")
 
                                 # if neither NC or PC need any houses, display option D
                                 # out: purchase D
                                 elif houses_needed[1] == 0 and houses_needed[2] == 0:
-                                    print(f"\nThis will cost ${total_cash_needed}. \n       Purchase 1 hotel and {total_houses_needed} house(s). \n     Put 1 hotel on Pennsylvania and return any houses to the bank.")
+                                    print(f"\nThis will cost ${total_cash_needed}. \n       Purchase 1 hotel and {total_houses_needed} house(s). \n     Put 1 hotel on Pennsylvania and return any houses to the bank. \n")
 
                             # if the user answers 0, end the program telling the user that there are no houses available for purchase
                             # out: no houses
                             elif houses == 0:
-                                print("\nThere are not enough houses available for purchase at this time.")
+                                print("\nThere are not enough houses available for purchase at this time.\n")
                                 sys.exit()
 
                         # if the user's amount of cash is less than the total amount needed, end the program telling the user that they have insufficient funds
                         # out: cash
                         elif cash < total_cash_needed:
-                            print(f"\nYou do not have sufficient funds to purchase a hotel at this time.")
+                            print(f"\nYou do not have sufficient funds to purchase a hotel at this time.\n")
                             sys.exit()
                 
                     # if the user answers 0, end the program telling the user that there are no hotels for purchase
                     # out: no hotels
                     elif hotels == 0:
-                        print(f"\nThere are not enough hotels available for purchase at this time.")
+                        print(f"\nThere are not enough hotels available for purchase at this time.\n")
                         sys.exit()
 
                 # if the the user answers 5, end the program telling the user to swap the hotel on PC with the houses on PA
                 # out: swap PC
                 elif prompt_pc == 5:
-                    print("\nSwap Pacific's hotel with Pennsylvania's 4 houses.")
+                    print("\nSwap Pacific's hotel with Pennsylvania's 4 houses.\n")
                     sys.exit()
 
             # if the user answers 5, end the program tellign the user to swap the hotel on NC with the houses on PA
             # out: swap NC
             elif prompt_nc == 5:
-                print("\nSwap North Carolina's hotel with Pennsylvania's 4 houses.")
+                print("\nSwap North Carolina's hotel with Pennsylvania's 4 houses.\n")
                 sys.exit()
 
         # if the user answers 5, end the program telling the user that there can only be one hotel per property
         # out: one hotel
         elif prompt_pa == 5:
-            print("\nYou cannot purchase a hotel if the property already has one.")
+            print("\nYou cannot purchase a hotel if the property already has one.\n")
             sys.exit()
+
+if __name__ == "__main__":
+    main()
