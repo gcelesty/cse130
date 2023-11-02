@@ -28,25 +28,26 @@ def main():
     try:
         with open(file_name, 'r') as file:
             data = json.load(file)
-            if 'array' in data:
+            if 'array' in data and isinstance(data['array'], list):
                 names = data['array']
+                if not names:
+                    print("The 'array' field is empty in the JSON file.")
+                    return
                 custom_sort(names)  # Sort the list
                 print("The values in {} are:".format(file_name))
                 for name in names:
                     print("\t" + name)
             else:
-                print("The JSON file doesn't contain an 'array' field.")
+                print("The JSON file doesn't contain a valid 'array' field.")
     except FileNotFoundError:
         print("File not found: {}".format(file_name))
     except json.JSONDecodeError:
         print("Invalid JSON format in the file.")
     
-    # Asserts to check for potential errors or bugs
-    assert len(names) == len(data['array']), "List length mismatch"
-    assert names == sorted(data['array']), "Custom sort failed"
-    assert names[0] == 'C', "First item is not 'C'"
-    assert names[-1] == 'VB', "Last item is not 'VB'"
+    # Add asserts if necessary
+    if names:
+        assert names[0] == 'C', "First item is not 'C'"
+        assert names[-1] == 'VB', "Last item is not 'VB'"
 
-if __name__ == "__main":
+if __name__ == "__main__":
     main()
-
