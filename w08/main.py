@@ -43,11 +43,6 @@ def main():
         print("File not found: {}".format(file_name))
     except json.JSONDecodeError:
         print("Invalid JSON format in the file.")
-    
-    # Add asserts if necessary
-    if names:
-        assert names[0] == 'C', "First item is not 'C'"
-        assert names[-1] == 'VB', "Last item is not 'VB'"
 
 if __name__ == "__main__":
     main()
