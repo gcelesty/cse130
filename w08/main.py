@@ -14,30 +14,39 @@
 
 import json
 
-# function to read JSON data from a file and return the list
-def read_json_file(file_name):
+def custom_sort(names):
+    n = len(names)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if names[j] > names[j + 1]:
+                names[j], names[j + 1] = names[j + 1], names[j]
+
+def main():
+    file_name = input("What is the name of the file? ")
+    
+    # Read data from JSON file
     try:
         with open(file_name, 'r') as file:
             data = json.load(file)
-            assert 'array' in data, "JSON file must contain 'array' key"
-            names = data['array']
-            assert isinstance(names, list), "Value under 'array' key must be a list"
-            return names
+            if 'array' in data:
+                names = data['array']
+                custom_sort(names)  # Sort the list
+                print("The values in {} are:".format(file_name))
+                for name in names:
+                    print("\t" + name)
+            else:
+                print("The JSON file doesn't contain an 'array' field.")
     except FileNotFoundError:
-        assert False, f"File '{file_name}' not found"
+        print("File not found: {}".format(file_name))
     except json.JSONDecodeError:
-        assert False, "Invalid JSON format in the file"
+        print("Invalid JSON format in the file.")
+    
+    # Asserts to check for potential errors or bugs
+    assert len(names) == len(data['array']), "List length mismatch"
+    assert names == sorted(data['array']), "Custom sort failed"
+    assert names[0] == 'C', "First item is not 'C'"
+    assert names[-1] == 'VB', "Last item is not 'VB'"
 
-# function to sort and display the list
-def sort_and_display(names):
-    names.sort()
-    for name in names:
-        print("\t" + name)
+if __name__ == "__main":
+    main()
 
-# fain program
-if __name__ == "__main__":
-    file_name = input("What is the name of the file? ")
-    names = read_json_file(file_name)
-    if names:
-        print("The values in", file_name, "are:")
-        sort_and_display(names)
