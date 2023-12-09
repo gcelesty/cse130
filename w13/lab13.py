@@ -57,8 +57,4 @@ def main():
     except AssertionError as e:
         print(f"Error: {e}")
 
-# example run 1
-main()
-
-# example run 2
 main()
