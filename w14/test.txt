@@ -1,0 +1,22 @@
+function findBestBuySellDays(stock_prices):
+    best_buy_day = 0
+    best_sell_day = 0
+    max_profit = 0
+    
+    for current_day in range(len(stock_prices)):
+        # Check if current day is a better buying day
+        if stock_prices[current_day] < stock_prices[best_buy_day]:
+            best_buy_day = current_day
+        else:
+            # Check if selling on the current day yields higher profit
+            current_profit = stock_prices[current_day] - stock_prices[best_buy_day]
+            if current_profit > max_profit:
+                best_sell_day = current_day
+                max_profit = current_profit
+    
+    return best_buy_day, best_sell_day, max_profit
+
+# Example usage
+stock_prices = [87, 88, 90, 85, 81, 82, 83, 82, 85, 87, 86]
+buy_day, sell_day, profit = findBestBuySellDays(stock_prices)
+print(f"Best time to buy: {buy_day}, Best time to sell: {sell_day}, Profit: ${profit}")
